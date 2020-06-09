@@ -1,18 +1,9 @@
-FROM rocker/r-base:3.6.3
+FROM rocker/geospatial:4.0.0
 
-RUN apt-get update && \
- apt-get install -y \
-   libcurl4-openssl-dev \
-   libxml2-dev \
-   libxt-dev \
-   libcairo2-dev \
-   libssl-dev && \
- install2.r --error \
+RUN  install2.r --error -r http://cran.rstudio.com/ \
     doParallel \
     EpiEstim \
-    Cairo \
-    devtools \
-    brew
+    Cairo 
 
 WORKDIR /app
 
